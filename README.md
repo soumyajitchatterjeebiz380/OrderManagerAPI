@@ -24,6 +24,46 @@ List the key features of your project here. You can use bullet points or a numbe
 - **API Gateway**: My system centralizes and manages external service communication through an API gateway, offering routing,  and in the future, load balancing, security enforcement, and analytics for enhanced reliability and performance.
 
 
+## MySQL CODE(This code should be inserted into your MySQL Database)
+```
+
+use testdb;
+
+CREATE TABLE items(
+	item_id  VARCHAR(10) PRIMARY KEY ,
+    quantity INT,
+    review INT,
+	num_review int
+);
+
+CREATE TABLE orders(
+	order_id INT PRIMARY KEY AUTO_INCREMENT,
+    userid INT,
+    item_id  VARCHAR(10),
+	FOREIGN KEY(item_id) REFERENCES items(item_id),
+    quantity INT
+);
+
+
+INSERT INTO items(item_id, quantity,review,num_review) VALUES
+	("Burger",100,5,1),
+    ( "Fries",100,3,1),
+    ("peas",100,3,1),
+    ("Tacos",100,4,1);
+    
+    
+INSERT INTO orders(order_id,userid, item_id, quantity ) VALUES
+	(1,1,"Burger",2),
+    (3,2,"Burger",2),
+    (2,2,"Tacos",2);
+    
+SELECT * FROM items;
+
+Select * FROM orders;
+
+```
+
+
 ## Contributions
 This project implements some industry standard tools used in our everyday world. I am always eager to learn about new technologies, so if you have any suggestion, please feel free to submit a pull request.
 
@@ -43,7 +83,7 @@ https://medium.com/@soumyajitchatterjee380/microservice-fundamentals-asynchronou
 Technologies used in this project are :
 
 - SpringBoot 3.0
-- MySQL
+- MySQL (Please Make Sure You Have Data In The Table Beforehand)
 - Eureka
 
 Thanks for visiting this repository!!!
